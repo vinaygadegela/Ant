@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<project name="test" default="run">
+
+	
+	<property name="build" location="build" />
+	<property name="libs" location="lib" />
+
+	<path id="junit.class.path">
+
+				<pathelement location="${build}" />
+	</path>
+
+	<target name="clean">
+	
+		<delete dir="${build}" />
+
+	</target>
+
+	<target name="makedir">
+		<mkdir dir="${build}" />
+	</target>
+
+	<target name="compile" depends="clean, makedir">
+		
+		<javac 	srcdir="${src}" destdir="${build}" debug="true" includeAntRuntime="false">
+		<classpath refid="junit.class.path" />
+		</javac>
+	</target>
+
+	<target name="run" depends="compile">
+	
+		<java classname="DemoAnt">
+			<classpath refid="junit.class.path" />
+		</java>
+		
+		
+
+	</target>
+</project>
